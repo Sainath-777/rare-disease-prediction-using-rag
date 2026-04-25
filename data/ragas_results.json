@@ -1,0 +1,14 @@
+{
+  "evaluation_framework": "RAGAS",
+  "knowledge_base_size": 1500,
+  "sample_size": 5,
+  "metrics": {
+    "context_precision": 1.0,
+    "faithfulness": 0.8788
+  },
+  "metric_definitions": {
+    "context_precision": "Measures if the correct rare disease was retrieved in the top FAISS results for a given patient query.",
+    "faithfulness": "Measures if the LLM reasoning was grounded in the retrieved disease data and did not hallucinate beyond it."
+  },
+  "notes": "Evaluated on a random 20-case sample from 100 curated test cases. Groq llama-3.1-8b-instant used as both the pipeline LLM and the RAGAS evaluator LLM. Embeddings: sentence-transformers/all-MiniLM-L6-v2."
+}

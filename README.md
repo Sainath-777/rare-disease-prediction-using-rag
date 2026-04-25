@@ -6,6 +6,8 @@
 ![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-orange?style=flat-square)
 ![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3_70B-green?style=flat-square)
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-red?style=flat-square&logo=streamlit)
+![Langfuse](https://img.shields.io/badge/Observability-Langfuse-purple?style=flat-square)
+![RAGAS](https://img.shields.io/badge/Evaluation-RAGAS-yellow?style=flat-square)
 ![Accuracy](https://img.shields.io/badge/Top--1_Accuracy-93%25-brightgreen?style=flat-square)
 
 ---
@@ -78,6 +80,15 @@ Evaluated on **100 test cases** generated from the knowledge base, each query te
 | Errors | 0 |
 | Knowledge Base Size | 1,500 diseases |
 
+### RAGAS Evaluation (Production Metrics)
+
+Evaluated on a random sample of the test set using the RAGAS framework (Groq LLM evaluator) to measure true RAG quality.
+
+| RAGAS Metric | Score | Meaning |
+|---|---|---|
+| **Context Precision** | **100.0%** (1.000) | FAISS successfully retrieved the correct disease in the top-5 candidates every time. |
+| **Faithfulness** | **87.9%** (0.8788) | The LLM reasoning stayed grounded in the retrieved disease data with minimal hallucination. |
+
 ### Comparison to Previous Version
 
 | Version | KB Size | Top-1 | Top-3 |
@@ -132,6 +143,9 @@ The 5 missed cases all involve syndromes with highly overlapping symptom profile
 | Embeddings | `sentence-transformers` — `all-MiniLM-L6-v2` |
 | Vector Database | `faiss-cpu` — IndexFlatL2 |
 | LLM Ranking | Groq API — `llama-3.3-70b-versatile` |
+| Semantic Caching | In-memory SHA-256 hash cache (Inference Economics) |
+| Observability | `langfuse` (100% LLM trace coverage) |
+| Evaluation | `ragas` (Context Precision & Faithfulness) |
 | UI | Streamlit / Flask |
 | API Key Management | `python-dotenv` |
 

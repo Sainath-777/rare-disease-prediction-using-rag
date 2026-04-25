@@ -1,8 +1,8 @@
 from src.retriever import retrieve
 from src.llm_ranker import rank_with_groq          # ✅ changed from rank_with_gemini
 from src.symptom_matcher import symptom_overlap_score
+from src.cache import semantic_cache               # ✅ Added caching layer
 import json
-
 
 def calibrate_confidence(llm_output, retrieved_candidates):
 
@@ -41,6 +41,12 @@ def calibrate_confidence(llm_output, retrieved_candidates):
 
 def run_pipeline(patient_input, use_llm=True):
 
+    # ✅ Step 1: Check Cache (Inference Economics)
+    if use_llm:
+        cached_result = semantic_cache.get(patient_input)
+        if cached_result:
+            return cached_result
+
     candidates = retrieve(patient_input, top_k=10)
 
     for c in candidates:
@@ -65,6 +71,10 @@ def run_pipeline(patient_input, use_llm=True):
     parsed = json.loads(raw_output)
 
     calibrated = calibrate_confidence(parsed, candidates)
+
+    # ✅ Step 2: Save to Cache for future identical queries
+    if use_llm:
+        semantic_cache.set(patient_input, calibrated)
 
     return calibrated
 
