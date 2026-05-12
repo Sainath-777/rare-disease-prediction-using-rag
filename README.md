@@ -11,6 +11,18 @@
 ![Accuracy](https://img.shields.io/badge/Top--1_Accuracy-93%25-brightgreen?style=flat-square)
 
 ---
+## 🚀 Live Demo
+
+🔗 Live Application:
+https://rare-disease-prediction-using-rag.streamlit.app/
+
+### Example Workflow
+1. Enter patient symptoms or upload PDF lab report
+2. AI extracts clinical findings
+3. Hybrid RAG engine retrieves related rare diseases
+4. LLM generates ranked differential diagnoses
+5. XAI module explains prediction reasoning
+
 
 ## 📌 Overview
 
