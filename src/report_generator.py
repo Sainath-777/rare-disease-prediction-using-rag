@@ -28,7 +28,7 @@ class DiagnosticReport(FPDF):
         self.set_font("Helvetica", "", 9)
         self.set_text_color(self.GREY_R, self.GREY_G, self.GREY_B)
         self.set_xy(10, 19)
-        self.cell(0, 6, "Diagnostic Intelligence System — Confidential Report")
+        self.cell(0, 6, "Diagnostic Intelligence System - Confidential Report")
 
         # Timestamp top-right
         ts = datetime.now().strftime("%Y-%m-%d  %H:%M")
@@ -48,7 +48,7 @@ class DiagnosticReport(FPDF):
         self.set_font("Helvetica", "I", 8)
         self.set_text_color(self.GREY_R, self.GREY_G, self.GREY_B)
         self.cell(0, 10,
-                  "⚠  Research prototype — academic use only. Not for clinical diagnosis. Consult a qualified medical professional.",
+                  "Research prototype - academic use only. Not for clinical diagnosis. Consult a qualified medical professional.",
                   align="C")
 
     def section_title(self, title: str):
@@ -148,7 +148,7 @@ def generate_pdf_report(
         pdf.set_font("Helvetica", "B", 11)
         pdf.set_text_color(7, 13, 20)
         pdf.set_x(12)
-        pdf.cell(0, 8, f"#{i+1}  {name}  —  {tag}", ln=True)
+        pdf.cell(0, 8, f"#{i+1}  {name}  -  {tag}", ln=True)
 
         pdf.confidence_bar(f"Overall Confidence", conf)
         pdf.key_value("LLM Confidence", f"{llm_conf}%", indent=4)
@@ -212,7 +212,7 @@ def generate_pdf_report(
                 pdf.set_x(20)
                 pdf.set_font("Helvetica", "", 10)
                 pdf.set_text_color(30, 30, 30)
-                pdf.cell(0, 6, f"  •  {t}", ln=True)
+                pdf.cell(0, 6, f"  -  {t}", ln=True)
 
         dietary = rec.get("dietary_advice", "") or rec.get("metabolic_management", "")
         if dietary:
