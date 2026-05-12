@@ -1,20 +1,13 @@
 .venv
 .env
-embeddings/
 __pycache__/
 # API keys — never push this
 .env
-
 # Python virtual environment
 .venv/
 __pycache__/
 *.pyc
 *.pyo
-
-# Large binary files
-embeddings/faiss_index.bin
-embeddings/metadata.json
-
 # OS files
 .DS_Store
 Thumbs.db

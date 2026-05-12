@@ -5,3 +5,10 @@ groq
 python-dotenv
 streamlit
 langfuse==2.60.3
+plotly
+fpdf2
+pyvis
+networkx
+Pillow
+PyMuPDF
+pandas
